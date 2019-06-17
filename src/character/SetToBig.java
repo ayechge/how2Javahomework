@@ -6,6 +6,7 @@ package character;
  * @Version 1.0
  */
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 /**
