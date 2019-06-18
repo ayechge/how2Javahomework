@@ -32,7 +32,7 @@ public class TraversingAll {
         //是文件夹
         if(file.isDirectory()){
             File[] files=file.listFiles();
-            //有些文件没有访问权限
+            //有些文件没有访问权限,会出现空指针异常
             if(files==null){
                 return;
             }
