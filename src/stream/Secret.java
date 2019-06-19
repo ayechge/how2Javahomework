@@ -18,10 +18,11 @@ public class Secret {
 
     public static void encode(File encodingFile, File encodedFile) {
         //用于存放加密后的数据
-        char[] result = new char[(int) encodedFile.length()];
-        //把文件的内容读入了all数组
-        char[] all = new char[(int) encodedFile.length()];
+        char[] result = new char[(int) encodingFile.length()];
+
+        char[] all = new char[(int) encodingFile.length()];
         int index = 0;
+        //把文件的内容读入了all数组
         try (FileReader fileReader = new FileReader(encodingFile)) {
             fileReader.read(all);
             for (char temp : all) {
@@ -53,6 +54,7 @@ public class Secret {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //将编码后的数据写入encodedFile
         try (FileWriter fileWriter = new FileWriter(encodedFile)) {
             fileWriter.write(result);
         } catch (Exception e) {
