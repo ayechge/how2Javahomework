@@ -1,30 +1,36 @@
 package stream;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 
-/**
- * @Author: zhaoty
- * @Date: 2019/6/18 10:09
- * @Version 1.0
- */
 public class TestStream {
+
     public static void main(String[] args) {
-        try {
-            File file = new File("D:/testFile.txt");
-            FileInputStream fileInputStream = new FileInputStream(file);
-            byte[] all=new byte[(int)(file.length())];
-            //把字节流中的数据读取到字节数组
-            //Reads up to <code>b.length</code> bytes of data from this input stream into an array of bytes.
-            fileInputStream.read(all);
-            for(byte temp:all){
-                System.out.println(temp);
+        // 准备文件lol.txt其中的内容是
+        // garen kill teemo
+        // teemo revive after 1 minutes
+        // teemo try to garen, but killed again
+        File f = new File("d:/lol.txt");
+        // 创建文件字符流
+        // 缓存流必须建立在一个存在的流的基础上
+        try (
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(fr)
+        )
+        {
+            while (true) {
+                // 一次读一行
+                String line = br.readLine();
+                if (null == line)
+                    break;
+                System.out.println(line);
             }
-            //使用流之后，应该手动关闭
-            fileInputStream.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
     }
 }
