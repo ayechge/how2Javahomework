@@ -25,6 +25,7 @@ public class Secret {
         //把文件的内容读入了all数组
         try (FileReader fileReader = new FileReader(encodingFile)) {
             fileReader.read(all);
+            //对所有的字符按照加密规则进行加密
             for (char temp : all) {
                 if (Character.isDigit(temp)) {
                     if (temp != '9') {
@@ -50,7 +51,6 @@ public class Secret {
                     result[index++] = temp;
                 }
             }
-//            System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
